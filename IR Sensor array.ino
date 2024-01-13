@@ -57,3 +57,19 @@ void sensorCalibrate()
     motorDrivr(0, 0);
     delay(500);
 }
+
+void lineFollow()
+{
+    if (isEnableLineFollowing)
+    {
+        int err = sensor.readSensor();
+
+        int leftMotorSpeed = 130;
+        int rightMotorSpeed = 130;
+
+        int difference = (err * kP) + ((err - lasrErr) * kD);
+
+        lasrErr = err;
+        motorDrivr(leftMotorSpeed + difference, rightMotorSpeed - difference)
+    }
+}
