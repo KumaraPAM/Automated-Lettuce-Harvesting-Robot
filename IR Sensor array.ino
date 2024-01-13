@@ -73,3 +73,56 @@ void lineFollow()
         motorDrivr(leftMotorSpeed + difference, rightMotorSpeed - difference)
     }
 }
+
+void motorDrivr(int leftM, int rightM)
+{
+    // Left Motor Controll
+    if (0 < leftM)
+    {
+        if (maxSpeed < leftM)
+        {
+            leftM = maxSpeed;
+        }
+
+        digitalWrite(PIN_LEFT_MOTOR_ENABLE, leftM);
+        digitalWrite(PIN_LEFT_MOTOR_REAR, LOW);
+        digitalWrite(PIN_LEFT_MOTOR_FRONT, HIGH);
+    }
+
+    else
+    {
+        if (leftM < minSpeed)
+        {
+            leftM = minSpeed;
+        }
+
+        digitalWrite(PIN_LEFT_MOTOR_ENABLE, leftM * -1);
+        digitalWrite(PIN_LEFT_MOTOR_FRONT, LOW);
+        digitalWrite(PIN_LEFT_MOTOR_REAR, HIGH);
+    }
+
+    // Right Motor Control
+    if (0 < rightM)
+    {
+        if (maxSpeed < rightM)
+        {
+            rightM = maxSpeed;
+        }
+
+        digitalWrite(PIN_RIGHT_MOTOR_ENABLE, rightM);
+        digitalWrite(PIN_RIGHT_MOTOR_REAR, LOW);
+        digitalWrite(PIN_RIGHT_MOTOR_FRONT, HIGH);
+    }
+
+    else
+    {
+        if (rightM < minSpeed)
+        {
+            rightM = minSpeed;
+        }
+
+        digitalWrite(PIN_RIGHT_MOTOR_ENABLE, rightM * -1);
+        digitalWrite(PIN_RIGHT_MOTOR_FRONT, LOW);
+        digitalWrite(PIN_RIGHT_MOTOR_REAR, HIGH);
+    }
+}
