@@ -46,8 +46,8 @@ void setup()
     pinMode(PIN_RIGHT_MOTOR_ENABLE, OUTPUT);
     pinMode(PIN_LEFT_MOTOR_FRONT, OUTPUT);
     pinMode(PIN_LEFT_MOTOR_REAR, OUTPUT);
-    pinMode(PIN_RIGHT_MOTOR_FRONT, OUTPUT);
-    pinMode(PIN_RIGHT_MOTOR_REAR, OUTPUT);
+    pinMode(PIN_ULTRASONIC_TRIG, OUTPUT);
+    pinMode(PIN_ULTRASONIC_ECHO, INPUT);
 
     servo.attach(PIN_SERVO);
     servo.write(0);

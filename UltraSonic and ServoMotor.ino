@@ -24,7 +24,24 @@ void setup()
     servo.write(0);
 }
 
+void loop()
+{
+    long verticalLevel = getUltrasonicInMM();
 
+    if (verticalLevel < dangerLowerVertivalLevel)
+    {
+        if ((verticalLevel < properVertivalLevel + verticalLevelErrorGap) || (verticalLevel > properVertivalLevel - verticalLevelErrorGap))
+        {
+            servoAngle += (properVertivalLevel - verticalLevel) * servoToMMRatio;
+            ServoRotate(servoAngle); // change verticalLevel of blade
+            delay(400);
+        }
+    }
+    else
+    {
+        Serial.write("near to a slant");
+    }
+}
 
 void ServoRotate(int r)
 {
