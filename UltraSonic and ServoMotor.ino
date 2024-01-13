@@ -23,3 +23,35 @@ void setup()
     servo.attach(PIN_SERVO);
     servo.write(0);
 }
+
+
+
+void ServoRotate(int r)
+{
+    if (r < 0)
+    {
+        r = 0;
+    }
+    if (r > 180)
+    {
+        r = 180;
+    }
+
+    servo.write(r);
+}
+
+long getUltrasonicInMM()
+{
+    long duration;
+
+    delay(5);
+    digitalWrite(PIN_ULTRASONIC_TRIG, LOW);
+    delayMicroseconds(2);
+    digitalWrite(PIN_ULTRASONIC_TRIG, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(PIN_ULTRASONIC_TRIG, LOW);
+    delayMicroseconds(15);
+    duration = pulseIn(PIN_ULTRASONIC_ECHO, HIGH, 180000UL);
+
+    return (duration / 2) / 2.91;
+}
