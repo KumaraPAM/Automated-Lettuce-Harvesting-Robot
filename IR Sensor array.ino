@@ -37,6 +37,11 @@ void setup()
     pinMode(PIN_RIGHT_MOTOR_REAR, OUTPUT);
 }
 
+void loop(){
+    sensorCalibrate();
+    lineFollow();
+}
+
 void sensorCalibrate()
 {
     for (int i = 0; i < 100; i++)
