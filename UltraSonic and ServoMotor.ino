@@ -9,7 +9,7 @@ int dangerLowerVertivalLevel = 80;
 int properVertivalLevel = 75;
 int verticalLevelErrorGap = 10;
 
-float servoToMMRatio = 0.233;
+float servoToMMRatio = 0.2;
 int servoAngle = 0;
 Servo servo;
 
